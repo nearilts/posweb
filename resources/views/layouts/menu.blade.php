@@ -19,7 +19,8 @@
             </a>
           </li>
 
-              
+          @canany(['Category', 'Produk'])
+                  
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-folder"></i> &nbsp; MASTER DATA <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -40,7 +41,11 @@
                @endcan
             </ul>
           </li>
+          @endcanany
 
+
+
+          @canany(['Transaksi Create', 'Transaksi'])
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-list"></i> &nbsp; PENJUALAN <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -63,6 +68,7 @@
                @endcan
             </ul>
           </li>
+          @endcanany
           @can('Pengguna')
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <i class="fa fa-users"></i> &nbsp; PENGGUNA <span class="caret"></span></a>
