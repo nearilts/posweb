@@ -59,7 +59,7 @@
         @foreach ($data->detail as $pp)
         <tr>
             <td style=" border: 1px solid black;" align="center">{{($pp['product'])}}</td>
-            <td style=" border: 1px solid black;" align="center">2</td>
+            <td style=" border: 1px solid black;" align="center">{{($pp['qty'])}}</td>
             <td style=" border: 1px solid black;" align="right">{{number_format($pp['price'])}}</td>
             <td style=" border: 1px solid black;" align="right">{{number_format($pp['profit'])}}</td>
         </tr>
