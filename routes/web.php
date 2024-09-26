@@ -65,3 +65,15 @@ Route::post('/giverole/{user}', [RolePermission::class, 'giveroles'])->name('giv
 Route::get('/user-detail/{user}', [RolePermission::class, 'user_detail'])->name('user.detail');
 Route::post('/user-detail/{user}', [RolePermission::class, 'user_mapping'])->name('user.ctype');
 
+
+
+Route::get('buildweb', function () {
+
+    \Artisan::call('cache:clear');
+    \Artisan::call('config:clear');
+    \Artisan::call('route:clear');
+    \Artisan::call('migrate', ['--force' => true ]);
+
+    return ("Cache is cleared, Time Now : ". date('Y-m-d H:i:s'));
+
+});
