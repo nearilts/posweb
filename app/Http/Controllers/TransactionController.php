@@ -62,6 +62,8 @@ class TransactionController extends Controller
                 'transaction_id' => $transaksi->id,
                 'product_id' => $value,
                 'product' => $product->name,
+                'informasi' => $request->informasi[$key],
+                'size' => $request->size[$key],
                 'qty' => $request->transaksi_jumlah[$key],
                 'price' => $harga_jual,
                 'profit' => $harga_jual * $request->transaksi_jumlah[$key],

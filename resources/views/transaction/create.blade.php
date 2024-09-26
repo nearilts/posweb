@@ -214,6 +214,16 @@
               </div>
 
               <div class="form-group">
+                <label>Informasi</label>
+                <input type="text" class="form-control" id="tambahkan_informasi" >
+              </div>
+
+              <div class="form-group">
+                <label>Size</label>
+                <input type="text" class="form-control" id="tambahkan_size" >
+              </div>
+
+              <div class="form-group">
                 <span class="btn btn-sm btn-primary pull-right btn-block" id="tombol-tambahkan">TAMBAHKAN</span>
               </div>
 
@@ -229,6 +239,8 @@
                   <tr>
                     <th>Kode Produk</th>
                     <th>Nama Produk</th>
+                    <th>Informasi</th>
+                    <th>Size</th>
                     <th style="text-align: center;">Harga</th>
                     <th style="text-align: center;">Jumlah</th>
                     <th style="text-align: center;">Total</th>
@@ -239,7 +251,7 @@
                 </tbody>
                 <tfoot>
                   <tr class="bg-info">
-                    <td style="text-align: right;" colspan="2"><b>Total</b></td>
+                    <td style="text-align: right;" colspan="4"><b>Total</b></td>
                     <td style="text-align: center;"><span class="pembelian_harga" id="0">Rp.0,-</span></td>
                     <td style="text-align: center;"><span class="pembelian_jumlah" id="0">0</span></td>
                     <td style="text-align: center;"><span class="pembelian_total" id="0">Rp.0,-</span></td>
@@ -397,6 +409,8 @@ $("body").on("click", "#tombol-tambahkan", function() {
   var harga = $("#tambahkan_harga").val();
   var jumlah = $("#tambahkan_jumlah").val();
   var total = $("#tambahkan_total").val();
+  var informasi = $("#tambahkan_informasi").val();
+  var size = $("#tambahkan_size").val();
 
 
   if (id.length == 0) {
@@ -411,6 +425,8 @@ $("body").on("click", "#tombol-tambahkan", function() {
     kode +
     "</td>" +
     "<td>" + nama + "</td>" +
+    "<td>" + informasi + "<input type='hidden' name='informasi[]' value='" + informasi + "'> </td>" +
+    "<td>" + size + "<input type='hidden' name='size[]' value='" + size + "'> </td>" +
     "<td align='center'>Rp." + formatNumber(harga) + ",-</td>" +
     "<td align='center'>" + formatNumber(jumlah) + "</td>" +
     "<td align='center'>Rp." + formatNumber(total) + ",-</td>" +

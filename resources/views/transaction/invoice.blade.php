@@ -50,7 +50,9 @@
 
     <table style="width: 100%; border-collapse: collapse; border: 1px solid black;">
         <tr>
+            <th style=" width: 20%; border: 1px solid black;" align="center">Informasi</th>
             <th style=" width: 20%; border: 1px solid black;" align="center">Item</th>
+            <th style=" width: 20%; border: 1px solid black;" align="center">Size</th>
             <th style=" width: 15%; border: 1px solid black;" align="center">Jumlah</th>
             <th style=" width: 20%; border: 1px solid black;" align="center">Harga</th>
             <th style=" width: 20%; border: 1px solid black;" align="center">Total Harga</th>
@@ -58,7 +60,9 @@
 
         @foreach ($data->detail as $pp)
         <tr>
+            <td style=" border: 1px solid black;" align="center">{{($pp['informasi'])}}</td>
             <td style=" border: 1px solid black;" align="center">{{($pp['product'])}}</td>
+            <td style=" border: 1px solid black;" align="center">{{($pp['size'])}}</td>
             <td style=" border: 1px solid black;" align="center">{{($pp['qty'])}}</td>
             <td style=" border: 1px solid black;" align="right">{{number_format($pp['price'])}}</td>
             <td style=" border: 1px solid black;" align="right">{{number_format($pp['profit'])}}</td>
@@ -67,26 +71,26 @@
         
 
         <tr>
-            <th style=" height:15px; border: 1px solid black;" align="left" colspan="4"> </th>
+            <th style=" height:15px; border: 1px solid black;" align="left" colspan="6"> </th>
         </tr>
         <tr>
-            <th style=" border: 1px solid black;" align="left" colspan="3">Sub Total</th>
+            <th style=" border: 1px solid black;" align="left" colspan="5">Sub Total</th>
             <th style=" border: 1px solid black;" align="right">{{number_format($data->sub_total)}}</th>
         </tr>
         <tr>
-            <th style=" border: 1px solid black;" align="left" colspan="3">Discount {{$data->diskon}}%</th>
+            <th style=" border: 1px solid black;" align="left" colspan="5">Discount {{$data->diskon}}%</th>
             <th style=" border: 1px solid black;" align="right">{{number_format(( $data->sub_total * $data->diskon) /100 )}}</th>
         </tr>
         <tr>
-            <th style=" border: 1px solid black;" align="left" colspan="3">Total</th>
+            <th style=" border: 1px solid black;" align="left" colspan="5">Total</th>
             <th style=" border: 1px solid black;" align="right">{{number_format($data->total)}}</th>
         </tr>
         <tr>
-            <th style=" border: 1px solid black;" align="left" colspan="3">DP</th>
+            <th style=" border: 1px solid black;" align="left" colspan="5">DP</th>
             <th style=" border: 1px solid black;" align="right">{{number_format($data->paid)}}</th>
         </tr>
         <tr>
-            <th style=" border: 1px solid black;" align="left" colspan="3">Sisa Pembayaran</th>
+            <th style=" border: 1px solid black;" align="left" colspan="5">Sisa Pembayaran</th>
             <th style=" border: 1px solid black;" align="right">{{number_format($data->unpaid)}}</th>
         </tr>
         
@@ -103,12 +107,7 @@
         </tr>
         <tr>
             <td align="center">
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+                <img src="{{ public_path('qr.jpeg') }}" alt="QR Code" style="width: 100px; height: auto;">
             </td>
         </tr>
         <tr>
