@@ -27,6 +27,11 @@ class TransactionController extends Controller
         $pdf = Pdf::loadView('transaction.invoice', $data);
         return $pdf->stream('invoice-'.$transaction->invoice_no.'.pdf');
     }
+    public function edit(Transaction $transaction) {
+        $data['transaction'] = $transaction;
+        $data['product'] = Product::latest()->get();
+        return view('transaction.edit', $data);
+    }
     
     public function store(Request $request) {
 
@@ -81,7 +86,41 @@ class TransactionController extends Controller
 
     
     public function update(Request $request, $id) {
-        dd($request->all());
+        // dd($request->all());
+
+        $transaksi = Transaction::find($id);
+        $transaksi->update([
+            'paid' => $request->paid,
+            'unpaid' => $request->unpaid,
+            'total' => $request->total,
+            'sub_total' => $request->sub_total,
+            ]
+        );
+        $profit = 0;
+
+        foreach ($request->detail as $key => $value) {
+            // dd($value);
+            $product = Product::find($value['product_id']);
+            $harga = $product->harga_modal;
+            $harga_jual = $product->harga_jual;
+            $tansdetail = TransactionDetail::find($value['id']);
+            $tansdetail->update([
+                'qty' => $value['qty'],
+                'price' => $harga_jual,
+                'profit' => $harga_jual * $value['qty'],
+            ]); 
+            $profit += ($harga_jual-$harga) * $value['qty'];
+        }
+
+        $diskon = ($transaksi->total * $transaksi->diskon) / 100;
+        $profit = $profit - $diskon ;
+
+        $transaksi->update([
+            'paid' => $request->paid,
+            'unpaid' => $request->unpaid,
+            'total_profit' => $profit]
+        );
+
         return redirect()->back()->with('success', 'Your data has been updated successfully!');
     }
 
