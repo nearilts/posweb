@@ -28,7 +28,7 @@ class TransactionController extends Controller
         return $pdf->stream('invoice-'.$transaction->invoice_no.'.pdf');
     }
     public function edit(Transaction $transaction) {
-        $data['transaction'] = $transaction;
+        $data['d'] = $transaction;
         $data['product'] = Product::latest()->get();
         return view('transaction.edit', $data);
     }
