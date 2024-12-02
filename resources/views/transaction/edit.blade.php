@@ -85,10 +85,10 @@
             </td>
           </tr>
           <tr>
-            <th>Diskon</th>
+            <th>Diskon (%)</th>
             <td>
-              <?php echo $d['diskon'] ?>%
-              <input type="hidden" name="diskon" value="{{ $d['diskon'] }}" class="diskons-{{ $d['id'] }}">
+              {{-- <?php echo $d['diskon'] ?>% --}}
+              <input type="number" name="diskon" value="{{ $d['diskon'] }}" class="form-control diskons-{{ $d['id'] }}">
             </td>
           </tr>
           <tr>
@@ -123,7 +123,7 @@
   </section>
 @push('script')
 <script>
-  $(document).on('input', '.qty-input-{{ $d['id'] }}, .paid-input-{{ $d['id'] }}', function() {
+  $(document).on('input', '.qty-input-{{ $d['id'] }}, .paid-input-{{ $d['id'] }}, .diskons-{{ $d['id'] }}', function() {
     let subTotal = 0;
 
     $('.qty-input-{{ $d['id'] }}').each(function() {
