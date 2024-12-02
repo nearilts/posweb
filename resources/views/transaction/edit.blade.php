@@ -97,6 +97,13 @@
             </td>
           </tr>
           <tr>
+            <th>Diskon</th>
+            <td>
+              <?php echo $d['diskon'] ?>%
+              <input type="hidden" name="diskon" value="{{ $d['diskon'] }}" class="diskons-{{ $d['id'] }}">
+            </td>
+          </tr>
+          <tr>
             <th>Total</th>
             <td>
               <span id="edit-total-{{ $d['id'] }}">Rp.{{ number_format($d['total']) }}</span>
@@ -133,10 +140,13 @@
 
     let paid = parseFloat($('#paid-{{ $d['id'] }}').val()) || 0;
     let unpaid = subTotal - paid;
+    let diskon = $('.diskons-{{ $d['id'] }}').val();
+    let subTotaldiskon = subTotal * diskon/100;
+    let totals = subTotal -subTotaldiskon;
 
     $('#unpaid-{{ $d['id'] }}').val(unpaid);
-    $('.totals-{{ $d['id'] }}').val(subTotal);
-    $('#edit-total-{{ $d['id'] }}').text('Rp.' + subTotal.toLocaleString());
+    $('.totals-{{ $d['id'] }}').val(totals);
+    $('#edit-total-{{ $d['id'] }}').text('Rp.' + totals.toLocaleString());
   });
 </script>
 @endpush
