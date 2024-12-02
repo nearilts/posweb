@@ -85,18 +85,6 @@
             </td>
           </tr>
           <tr>
-            <th>Total Paid</th>
-            <td>
-              <input type="number" name="paid" id="paid-{{ $d['id'] }}" value="{{ $d['paid'] }}" class="form-control paid-input-{{ $d['id'] }}" min="0">
-            </td>
-          </tr>
-          <tr>
-            <th>Unpaid</th>
-            <td>
-              <input type="number" name="unpaid" id="unpaid-{{ $d['id'] }}" value="{{ $d['unpaid'] }}" class="form-control unpaid-input-{{ $d['id'] }}" readonly>
-            </td>
-          </tr>
-          <tr>
             <th>Diskon</th>
             <td>
               <?php echo $d['diskon'] ?>%
@@ -108,6 +96,18 @@
             <td>
               <span id="edit-total-{{ $d['id'] }}">Rp.{{ number_format($d['total']) }}</span>
               <input type="hidden" name="total" value="{{ $d['total'] }}" class="totals-{{ $d['id'] }}">
+            </td>
+          </tr>
+          <tr>
+            <th>Total Paid</th>
+            <td>
+              <input type="number" name="paid" id="paid-{{ $d['id'] }}" value="{{ $d['paid'] }}" class="form-control paid-input-{{ $d['id'] }}" min="0">
+            </td>
+          </tr>
+          <tr>
+            <th>Unpaid</th>
+            <td>
+              <input type="number" name="unpaid" id="unpaid-{{ $d['id'] }}" value="{{ $d['unpaid'] }}" class="form-control unpaid-input-{{ $d['id'] }}" readonly>
             </td>
           </tr>
         </table>
@@ -138,12 +138,12 @@
     $('#edit-sub-total-{{ $d['id'] }}').text('Rp.' + subTotal.toLocaleString());
     $('.sub-total-{{ $d['id'] }}').val(subTotal);
 
-    let paid = parseFloat($('#paid-{{ $d['id'] }}').val()) || 0;
-    let unpaid = subTotal - paid;
+    
     let diskon = $('.diskons-{{ $d['id'] }}').val();
     let subTotaldiskon = subTotal * diskon/100;
     let totals = subTotal -subTotaldiskon;
-
+    let paid = parseFloat($('#paid-{{ $d['id'] }}').val()) || 0;
+    let unpaid = totals - paid;
     $('#unpaid-{{ $d['id'] }}').val(unpaid);
     $('.totals-{{ $d['id'] }}').val(totals);
     $('#edit-total-{{ $d['id'] }}').text('Rp.' + totals.toLocaleString());
