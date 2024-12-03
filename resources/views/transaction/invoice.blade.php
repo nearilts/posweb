@@ -53,7 +53,7 @@
             <th style=" width: 20%; border: 1px solid black;" align="center">Informasi</th>
             <th style=" width: 20%; border: 1px solid black;" align="center">Item</th>
             <th style=" width: 20%; border: 1px solid black;" align="center">Size</th>
-            <th style=" width: 15%; border: 1px solid black;" align="center">Jumlah</th>
+            <th style=" width: 15%; border: 1px solid black;" align="center">Total Bahan</th>
             <th style=" width: 20%; border: 1px solid black;" align="center">Harga</th>
             <th style=" width: 20%; border: 1px solid black;" align="center">Total Harga</th>
         </tr>

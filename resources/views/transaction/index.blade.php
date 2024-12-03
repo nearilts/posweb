@@ -173,7 +173,7 @@
                                   <tr>
                                     <th>Nama Produk</th>
                                     <th width="1%" style="text-align: center;">Harga</th>
-                                    <th width="1%" style="text-align: center;">Jumlah</th>
+                                    <th width="1%" style="text-align: center;">Total Bahan</th>
                                     <th width="1%" style="text-align: center;">Total</th>
                                   </tr>
                                 </thead>

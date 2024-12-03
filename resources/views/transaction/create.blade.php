@@ -204,8 +204,8 @@
               </div>
 
               <div class="form-group">
-                <label>Jumlah</label>
-                <input type="number" class="form-control" id="tambahkan_jumlah" min="1">
+                <label>Total Bahan</label>
+                <input type="number" class="form-control" id="tambahkan_jumlah" >
               </div>
 
               <div class="form-group">

@@ -52,7 +52,7 @@
           <tr>
             <th>Nama Produk</th>
             <th>Harga</th>
-            <th>Jumlah</th>
+            <th>Total Bahan</th>
             <th>Total</th>
           </tr>
         </thead>
@@ -64,7 +64,7 @@
               <td>
                 <input type="hidden" name="detail[{{ $ky }}][id]" value="{{ $pp['id'] }}">
                 <input type="hidden" name="detail[{{ $ky }}][product_id]" value="{{ $pp['product_id'] }}">
-                <input type="number" name="detail[{{ $ky }}][qty]" id="qty-{{ $d['id'] }}-{{ $ky }}" value="{{ $pp['qty'] }}" class="form-control qty-input-{{ $d['id'] }}" data-price="{{ $pp['price'] }}" min="1">
+                <input type="number" name="detail[{{ $ky }}][qty]" id="qty-{{ $d['id'] }}-{{ $ky }}" value="{{ $pp['qty'] }}" class="form-control qty-input-{{ $d['id'] }}" data-price="{{ $pp['price'] }}" >
               </td>
               <td>
                 <span id="item-total-{{ $d['id'] }}-{{ $ky }}">Rp.{{ number_format($pp['qty'] * $pp['price']) }}</span>
